@@ -3,6 +3,10 @@ def get_database():
 	import pymongo
 	import sys
 
+	if len(sys.argv) > 1:
+		print('too many arguments')
+		sys.exit(2)
+
 	# Provide the mongodb atlas url to connect python to mongodb using pymongo
 	CONNECTION_STRING = str(sys.argv[-1])
 
