@@ -1,9 +1,10 @@
 def get_database():
 	from pymongo import MongoClient
 	import pymongo
+	import sys
 
 	# Provide the mongodb atlas url to connect python to mongodb using pymongo
-	CONNECTION_STRING = 'mongodb+srv://<username>:<password>@<cluster-name>.mongodb.net/myFirstDatabase'
+	CONNECTION_STRING = str(sys.argv[-1])
 
 	# Create a connection using MongoClient. You can import MongoClient or use pymongo.MongoClient
 	from pymongo import MongoClient
@@ -13,7 +14,7 @@ def get_database():
 	return client['user_shopping_list']
 	
 # Add this to execute only the called functions from other files
-if __name__ == "__main__":	
+if __name__ == "__main__":
 	
 	# Get the database
 	dbname = get_database()
@@ -59,3 +60,9 @@ if __name__ == "__main__":
 
 	# Insert single document
 	collection_name.insert_one(item_3)
+
+	from pymongo_test_insert_more_items import insert_more_items
+	insert_more_items()
+
+	from pymongo_test_query import query
+	query()
