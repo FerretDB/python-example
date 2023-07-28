@@ -22,4 +22,4 @@ for i in range(1, 5):
     db['foo'].insert_one({'_id': i, 'a': i})
 
 res = db['foo'].find_one({'a': 4})
-print(res)
+assert (res == {'_id': 4, 'a': 4}), "Value should be 4"
