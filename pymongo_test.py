@@ -13,5 +13,13 @@ client = MongoClient(uri)
 
 db = client.test
 res = db.command('ping', '1')
+print(res)
 
+res = db.command('dropDatabase', 'test')
+print(res)
+
+for i in range(1, 5):
+    db['foo'].insert_one({'_id': i, 'a': i})
+
+res = db['foo'].find_one({'a': 4})
 print(res)
