@@ -10,7 +10,7 @@ db = client.test
 res = db.command('ping', '1')
 print(res)
 
-res = db.command('dropDatabase', 'test')
+res = db.command('dropDatabase', 1)
 print(res)
 
 for i in range(1, 5):
