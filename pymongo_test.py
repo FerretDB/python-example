@@ -18,7 +18,8 @@ doc_list = [
     {'_id': 3, 'a': 3},
     {'_id': 4, 'a': 4},
 ]
+
 db['foo'].insert_many(doc_list)
 
-res = db['foo'].find_one({'a': 4})
-assert (res == {'_id': 4, 'a': 4}), "Value should be 4"
+actual = db['foo'].find_one({'a': 4})
+assert (actual == {'_id': 4, 'a': 4}), "Value should be 4"
