@@ -7,10 +7,10 @@ client = MongoClient(uri)
 
 db = client.test
 res = db.command('ping', '1')
-assert (res == {'ok': 1.0}), "ping failed"
+assert (res['ok'] == 1.0), "ping failed"
 
 res = db.command('dropDatabase', 1)
-assert (res == {'ok': 1.0}), "dropDatabase failed"
+assert (res['ok'] == 1.0), "dropDatabase failed"
 
 doc_list = [
     {'_id': 1, 'a': 1},
