@@ -7,3 +7,5 @@ How to run:
 ```sh
 python3 pymongo_test.py "mongodb://username:password@localhost:27017/?authMechanism=PLAIN"
 ```
+
+To use the strict Stable API run with `--strict` flag.
