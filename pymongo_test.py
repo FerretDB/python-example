@@ -1,9 +1,20 @@
 from pymongo import MongoClient
-import sys
+from pymongo.server_api import ServerApi
+import argparse
 
-uri = sys.argv[-1]
+parser = argparse.ArgumentParser(
+                    prog='python-example',
+                    description='A simple example of using MongoDB with PyMongo',
+                    add_help=True)
 
-client = MongoClient(uri)
+parser.add_argument('uri') # positional argument
+parser.add_argument('-s', '--strict', action='store_true', help='Use strict stable API mode.')
+
+if parser.parse_args().strict:
+    server_api = ServerApi('1', strict=True)
+    client = MongoClient(parser.parse_args().uri, server_api=server_api)
+else:
+    client = MongoClient(parser.parse_args().uri)
 
 db = client.test
 res = db.command('ping', '1')
